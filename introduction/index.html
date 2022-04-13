@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My first three.js app</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to threeJS</h1>
+    <ul>
+      <li><a href="https://jsfiddle.net/fxurzeb4/">demo sandbox</a></li>
+    </ul>
+    <div id="root"></div>
+    <script src="./three.js"></script>
+    <!-- <script src="https://threejs.org/build/three.js"></script> -->
+    <script>
+      /**
+       * initialize scene. must define variable as global
+       */
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+
+      const renderer = new THREE.WebGLRenderer();
+      /**
+       * NOTE If you wish to keep the size of your app but render it at a lower resolution,
+       * you can do so by calling setSize with false as updateStyle (the third argument).
+       * For example, setSize(window.innerWidth/2, window.innerHeight/2, false)
+       * will render your app at half resolution, given that your <canvas> has 100% width and height.
+       *
+       * https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene
+       */
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.querySelector("#root").appendChild(renderer.domElement);
+
+      /**
+       * add box to scene
+       */
+      const geometry = new THREE.BoxGeometry();
+      const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+
+      camera.position.z = 5;
+
+      // add animation
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+      }
+
+      animate();
+    </script>
+  </body>
+</html>

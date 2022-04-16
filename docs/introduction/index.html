@@ -20,6 +20,18 @@
         id="color-picker"
         value="#00ff00"
       />
+      <h2>Change location of camera</h2>
+      <label for="camera-location">Camera z axis : </label>
+      0
+      <input
+        type="range"
+        name="camera location"
+        id="camera-location"
+        value="2"
+        min="0"
+        max="15"
+      />
+      15
     </div>
     <div>
       <h2>Related url</h2>
@@ -98,6 +110,11 @@
         .addEventListener("change", (e) => {
           console.log(`Cube's color changed to ${e.target.value}`);
           material.color = new THREE.Color(e.target.value);
+        });
+      document.body.querySelector("#camera-location") /
+        addEventListener("change", (e) => {
+          console.log(`Change camera z axis to ${e.target.value}`);
+          camera.position.z = e.target.value;
         });
     </script>
   </body>

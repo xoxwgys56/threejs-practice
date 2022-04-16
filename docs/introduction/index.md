@@ -3,4 +3,4 @@
 ## TODO
 
 - [x] add color picker for changing color of cube.
-- [ ] add camera z position input slider.
+- [x] add camera z position input slider.

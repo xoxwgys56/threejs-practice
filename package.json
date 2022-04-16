@@ -1,0 +1,20 @@
+{
+  "name": "threejs-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/xoxwgys56/threejs-practice.git",
+  "keywords": [],
+  "author": "Daewon Kim <lololtoday@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xoxwgys56/threejs-practice/issues"
+  },
+  "homepage": "https://xoxwgys56.github.io/threejs-practice/"
+}

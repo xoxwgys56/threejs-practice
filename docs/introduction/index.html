@@ -4,16 +4,46 @@
     <meta charset="utf-8" />
     <title>My first three.js app</title>
     <style>
-      body {
+      #root {
         margin: 0;
       }
     </style>
   </head>
   <body>
     <h1>Welcome to threeJS</h1>
-    <ul>
-      <li><a href="https://jsfiddle.net/fxurzeb4/">demo sandbox</a></li>
-    </ul>
+    <div>
+      <h2>Change color</h2>
+      <label for="color-picker">Cube color picker : </label>
+      <input
+        type="color"
+        name="color picker"
+        id="color-picker"
+        value="#00ff00"
+      />
+    </div>
+    <div>
+      <h2>Related url</h2>
+      <ul>
+        <li><a href="https://jsfiddle.net/fxurzeb4/">demo sandbox</a></li>
+        <li>
+          threeJS
+          <ul>
+            <li>
+              <a
+                href="https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene"
+                >creating a scene</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://threejs.org/docs/index.html?q=material#api/en/math/Color"
+                >color api doc</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
     <div id="root"></div>
     <script src="./three.js"></script>
     <!-- <script src="https://threejs.org/build/three.js"></script> -->
@@ -38,7 +68,7 @@
        *
        * https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene
        */
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
       document.body.querySelector("#root").appendChild(renderer.domElement);
 
       /**
@@ -50,7 +80,7 @@
       const cube = new THREE.Mesh(geometry, material);
       scene.add(cube);
 
-      camera.position.z = 5;
+      camera.position.z = 2;
 
       // add animation
       function animate() {
@@ -62,6 +92,13 @@
       }
 
       animate();
+
+      document.body
+        .querySelector("#color-picker")
+        .addEventListener("change", (e) => {
+          console.log(`Cube's color changed to ${e.target.value}`);
+          material.color = new THREE.Color(e.target.value);
+        });
     </script>
   </body>
 </html>
